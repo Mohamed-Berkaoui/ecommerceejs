@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('./parts/navbar.ejs') %>
+
+    <div class="container" style="display: flex; gap: 20px; flex-wrap: wrap ;justify-content: center;">
+      <% products.forEach(product => { %>
+      <div
+        class="box"
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          justify-content: space-between;
+          width: 300px;
+          height: 350px;
+          border: 1px solid black;
+        "
+      >
+        <img
+          style="width: 100%; height: 150px; object-fit: cover"
+          src="<%= product.image %>"
+          alt=""
+        />
+        <h2><%= product.title %></h2>
+       <a href="/product/<%= product._id %>"> <button style="height: 40px; background-color: aqua;">show more</button></a>
+       <a href="/product/update/<%= product._id %>"> <button style="height: 40px; background-color: aqua;">update</button></a>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>
